@@ -1,0 +1,108 @@
+{
+  "entities": {
+    "vaccine": {
+      "title": "Vaccine",
+      "description": "Vaccine types and specifications",
+      "properties": {
+        "code": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "unit": { "type": "string" },
+        "dosesPerFlakon": { "type": "number" },
+        "shelfLifeMonths": { "type": "number" },
+        "storageTemp": { "type": "string text" },
+        "targetSpecies": { "type": "string" }
+      },
+      "required": ["code", "name", "type"]
+    },
+    "series": {
+      "title": "Series",
+      "description": "Vaccine batch and lot numbers in inventory",
+      "properties": {
+        "seriesNo": { "type": "string" },
+        "lotNo": { "type": "string" },
+        "vaccineId": { "type": "string" },
+        "vaccineName": { "type": "string" },
+        "productionDate": { "type": "string" },
+        "expiryDate": { "type": "string" },
+        "initialDoseQuantity": { "type": "number" },
+        "currentDoseQuantity": { "type": "number" },
+        "distributedDoseQuantity": { "type": "number" },
+        "returnedDoseQuantity": { "type": "number" },
+        "destroyedDoseQuantity": { "type": "number" },
+        "status": { "type": "string" },
+        "flakonCount": { "type": "number" },
+        "qcPass": { "type": "boolean" },
+        "notes": { "type": "string text" }
+      },
+      "required": ["seriesNo", "lotNo", "vaccineName", "initialDoseQuantity"]
+    },
+    "shipment": {
+      "title": "Shipment",
+      "description": "Province vaccine distribution shipments",
+      "properties": {
+        "shipmentNo": { "type": "string" },
+        "provinceCode": { "type": "number" },
+        "provinceName": { "type": "string" },
+        "institutionName": { "type": "string" },
+        "seriesId": { "type": "string" },
+        "seriesNo": { "type": "string text" },
+        "lotNo": { "type": "string text" },
+        "vaccineName": { "type": "string" },
+        "doseQuantity": { "type": "number" },
+        "flakonQuantity": { "type": "number" },
+        "protocolNo": { "type": "string" },
+        "date": { "type": "string" },
+        "courierDetails": { "type": "string text" },
+        "coldChainVerified": { "type": "boolean" },
+        "status": { "type": "string" },
+        "notes": { "type": "string text" }
+      },
+      "required": ["shipmentNo", "provinceName", "seriesId", "doseQuantity"]
+    },
+    "return": {
+      "title": "Return",
+      "description": "Returned vaccines from provinces",
+      "properties": {
+        "returnNo": { "type": "string" },
+        "provinceName": { "type": "string" },
+        "seriesId": { "type": "string" },
+        "seriesNo": { "type": "string" },
+        "vaccineName": { "type": "string" },
+        "doseQuantity": { "type": "number text" },
+        "returnReason": { "type": "string text" },
+        "date": { "type": "string" },
+        "conditionStatus": { "type": "string" },
+        "processedToStock": { "type": "boolean" }
+      },
+      "required": ["returnNo", "provinceName", "seriesId", "doseQuantity"]
+    },
+    "destruction": {
+      "title": "Destruction",
+      "description": "Vaccine destruction and scrapping protocols",
+      "properties": {
+        "destructionNo": { "type": "string" },
+        "seriesId": { "type": "string" },
+        "seriesNo": { "type": "string" },
+        "vaccineName": { "type": "string text" },
+        "doseQuantity": { "type": "number" },
+        "reason": { "type": "string text" },
+        "date": { "type": "string" },
+        "protocolFileRef": { "type": "string" },
+        "approvedBy": { "type": "string" }
+      },
+      "required": ["destructionNo", "seriesId", "doseQuantity", "reason"]
+    },
+    "audit_log": {
+      "title": "AuditLog",
+      "description": "System transaction audit logs",
+      "properties": {
+        "action": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "details": { "type": "string text" },
+        "targetId": { "type": "string" }
+      },
+      "required": ["action", "timestamp"]
+    }
+  }
+}

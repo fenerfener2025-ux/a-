@@ -1,0 +1,98 @@
+import { Province } from '../types';
+
+export const TURKEY_PROVINCES: Province[] = [
+  { code: '01', name: 'Adana', region: 'Akdeniz', districts: ['Seyhan', 'Yüreğir', 'Çukurova', 'Sarıçam', 'Ceyhan', 'Kozan', 'İmamoğlu', 'Karaisalı', 'Karataş', 'Pozantı', 'Saimbeyli', 'Tufanbeyli', 'Yumurtalık', 'Feke', 'Aladağ'] },
+  { code: '02', name: 'Adıyaman', region: 'Güneydoğu Anadolu', districts: ['Merkez', 'Besni', 'Gölbaşı', 'Kahta', 'Gerger', 'Samsat', 'Sincik', 'Tut', 'Çelikhan'] },
+  { code: '03', name: 'Afyonkarahisar', region: 'Ege', districts: ['Merkez', 'Bolvadin', 'Dinar', 'Emirdağ', 'Sandıklı', 'Şuhut', 'Çay', 'İscehisar', 'Sultandağı', 'Sinanpaşa', 'Dazkırı', 'Başmakçı', 'Bayat', 'İhsaniye', 'Çobanlar', 'Evciler', 'Hocalar', 'Kızılören'] },
+  { code: '04', name: 'Ağrı', region: 'Doğu Anadolu', districts: ['Merkez', 'Doğubayazıt', 'Eleşkirt', 'Patnos', 'Tutak', 'Diyadin', 'Hamur', 'Taşlıçay'] },
+  { code: '05', name: 'Amasya', region: 'Karadeniz', districts: ['Merkez', 'Merzifon', 'Suluova', 'Taşova', 'Göynücek', 'Gümüşhacıköy', 'Hamamözü'] },
+  { code: '06', name: 'Ankara', region: 'İç Anadolu', districts: ['Çankaya', 'Keçiören', 'Yenimahalle', 'Mamak', 'Etimesgut', 'Sincan', 'Altındağ', 'Gölbaşı', 'Polatlı', 'Çubuk', 'Kahramankazan', 'Akyurt', 'Bala', 'Beypazarı', 'Elmadağ', 'Evren', 'Güdül', 'Haymana', 'Kalecik', 'Kızılcahamam', 'Nallıhan', 'Şereflikoçhisar', 'Nallıhan'] },
+  { code: '07', name: 'Antalya', region: 'Akdeniz', districts: ['Muratpaşa', 'Kepez', 'Konyaaltı', 'Alanya', 'Manavgat', 'Serik', 'Kumluca', 'Kaş', 'Finike', 'Gazipaşa', 'Elmalı', 'Korkuteli', 'Akseki', 'Demre', 'Gündoğmuş', 'İbradı', 'Kemer'] },
+  { code: '08', name: 'Artvin', region: 'Karadeniz', districts: ['Merkez', 'Hopa', 'Borçka', 'Arhavi', 'Yusufeli', 'Şavşat', 'Ardanuç', 'Murgul', 'Kemalpaşa'] },
+  { code: '09', name: 'Aydın', region: 'Ege', districts: ['Efeler', 'Nazilli', 'Söke', 'Kuşadası', 'Didim', 'İncirliova', 'Çine', 'Germencik', 'Bozdoğan', 'Karacasu', 'Koçarlı', 'Köşk', 'Kuyucak', 'Sultanhisar', 'Yenipazar', 'Buharkent', 'Karpuzlu'] },
+  { code: '10', name: 'Balıkesir', region: 'Marmara', districts: ['Karesi', 'Altıeylül', 'Bandırma', 'Edremit', 'Gönen', 'Burhaniye', 'Ayvalık', 'Bigadiç', 'Dursunbey', 'Susurluk', 'Erdek', 'Havran', 'İvrindi', 'Sındırgı', 'Manyas', 'Savaştepe', 'Kepsut', 'Marmara', 'Gömeç', 'Balya'] },
+  { code: '11', name: 'Bilecik', region: 'Marmara', districts: ['Merkez', 'Bozüyük', 'Osmaneli', 'Söğüt', 'Gölpazarı', 'Pazaryeri', 'Yenipazar', 'İnhisar'] },
+  { code: '12', name: 'Bingöl', region: 'Doğu Anadolu', districts: ['Merkez', 'Genç', 'Solhan', 'Karlıova', 'Kiğı', 'Adaklı', 'Yayladere', 'Yedisu'] },
+  { code: '13', name: 'Bitlis', region: 'Doğu Anadolu', districts: ['Merkez', 'Tatvan', 'Ahlat', 'Adilcevaz', 'Güroymak', 'Hizan', 'Mutki'] },
+  { code: '14', name: 'Bolu', region: 'Karadeniz', districts: ['Merkez', 'Gerede', 'Mudurnu', 'Mengen', 'Göynük', 'Dörtdivan', 'Yeniçağa', 'Seben', 'Kıbrıscık'] },
+  { code: '15', name: 'Burdur', region: 'Akdeniz', districts: ['Merkez', 'Bucak', 'Gölhisar', 'Yeşilova', 'Tefenni', 'Ağlasun', 'Çavdır', 'Karamanlı', 'Kemer', 'Altınyayla', 'Çeltikçi'] },
+  { code: '16', name: 'Bursa', region: 'Marmara', districts: ['Osmangazi', 'Yıldırım', 'Nilüfer', 'İnegöl', 'Gemlik', 'Mustafakemalpaşa', 'Mudanya', 'Gürsu', 'Karacabey', 'Orhangazi', 'Kestel', 'Yenişehir', 'Iznik', 'Orhaneli', 'Keles', 'Büyükorhan', 'Harmancık'] },
+  { code: '17', name: 'Çanakkale', region: 'Marmara', districts: ['Merkez', 'Biga', 'Çan', 'Gelibolu', 'Yenice', 'Ezine', 'Ayvacık', 'Lapseki', 'Bayramiç', 'Eceabat', 'Gökçeada', 'Bozcaada'] },
+  { code: '18', name: 'Çankırı', region: 'İç Anadolu', districts: ['Merkez', 'Çerkeş', 'Ilgaz', 'Kurşunlu', 'Orta', 'Şabanözü', 'Yapraklı', 'Atkaracalar', 'Kızılırmak', 'Korgun', 'Bayramören', 'Eldivan'] },
+  { code: '19', name: 'Çorum', region: 'Karadeniz', districts: ['Merkez', 'Sungurlu', 'Osmancık', 'İskilip', 'Alaca', 'Bayat', 'Mecitözü', 'Kargı', 'Ortaköy', 'Dodurga', 'Laçin', 'Uğurludağ', 'Boğazkale', 'Oğuzlar'] },
+  { code: '20', name: 'Denizli', region: 'Ege', districts: ['Pamukkale', 'Merkezefendi', 'Çivril', 'Acıpayam', 'Tavas', 'Honaz', 'Sarayköy', 'Buldan', 'Kale', 'Çal', 'Çameli', 'Serinhisar', 'Bozkurt', 'Güney', 'Çardak', 'Bekilli', 'Beyağaç', 'Babadağ', 'Baklan'] },
+  { code: '21', name: 'Diyarbakır', region: 'Güneydoğu Anadolu', districts: ['Kayapınar', 'Bağlar', 'Yenişehir', 'Sur', 'Ergani', 'Bismil', 'Silvan', 'Çermik', 'Çınar', 'Dicle', 'Kulp', 'Hani', 'Lice', 'Eğil', 'Hazro', 'Kocaköy', 'Çüngüş'] },
+  { code: '22', name: 'Edirne', region: 'Marmara', districts: ['Merkez', 'Keşan', 'Uzunköprü', 'İpsala', 'Havsa', 'Meriç', 'Süloğlu', 'Lalapaşa', 'Enez'] },
+  { code: '23', name: 'Elazığ', region: 'Doğu Anadolu', districts: ['Merkez', 'Kovancılar', 'Karakoçan', 'Palu', 'Ağın', 'Arıcak', 'Baskil', 'Madencilik', 'Kebanoğlu', 'Sivrice', 'Maden'] },
+  { code: '24', name: 'Erzincan', region: 'Doğu Anadolu', districts: ['Merkez', 'Tercan', 'Üzümlü', 'Refahiye', 'Çayırlı', 'İliç', 'Kemah', 'Kemaliye', 'Otlukbeli'] },
+  { code: '25', name: 'Erzurum', region: 'Doğu Anadolu', districts: ['Yakutiye', 'Palandöken', 'Aziziye', 'Horasan', 'Oltu', 'Pasinler', 'Karayazı', 'Hınıs', 'Tekman', 'Aşkale', 'Şenkaya', 'Tortum', 'Karaçoban', 'Ispir', 'Köprüköy', 'Çat', 'Olur', 'Uzundere', 'Pazaryolu'] },
+  { code: '26', name: 'Eskişehir', region: 'İç Anadolu', districts: ['Odunpazarı', 'Tepebaşı', 'Sivrihisar', 'Çifteler', 'Seyitgazi', 'Alpu', 'Mihalıççık', 'Mahmudiye', 'Beylikova', 'Inönü', 'Günyüzü', 'Sarıcakaya', 'Mihalgazi', 'Han'] },
+  { code: '27', name: 'Gaziantep', region: 'Güneydoğu Anadolu', districts: ['Şahinbey', 'Şehitkamil', 'Nizip', 'İslahiye', 'Nurdağı', 'Araban', 'Oğuzeli', 'Yavuzeli', 'Karkamış'] },
+  { code: '28', name: 'Giresun', region: 'Karadeniz', districts: ['Merkez', 'Bulancak', 'Espiye', 'Görele', 'Tirebolu', 'Şebinkarahisar', 'Keşap', 'Dereli', 'Eynesil', 'Piraziz', 'Yağlıdere', 'Alucra', 'Çamoluk', 'Güce', 'Çanakçı', 'Doğankent'] },
+  { code: '29', name: 'Gümüşhane', region: 'Karadeniz', districts: ['Merkez', 'Kelkit', 'Şiran', 'Kürtün', 'Köse', 'Torul'] },
+  { code: '30', name: 'Hakkari', region: 'Doğu Anadolu', districts: ['Merkez', 'Yüksekova', 'Şemdinli', 'Çukurca', 'Derecik'] },
+  { code: '31', name: 'Hatay', region: 'Akdeniz', districts: ['Antakya', 'İskenderun', 'Defne', 'Dörtyol', 'Samandağ', 'Kırıkhan', 'Reyhanlı', 'Arsuz', 'Altınözü', 'Hassa', 'Erzin', 'Payas', 'Belen', 'Kumlu', 'Yayladağı'] },
+  { code: '32', name: 'Isparta', region: 'Akdeniz', districts: ['Merkez', 'Yalvaç', 'Eğirdir', 'Şarkikaraağaç', 'Gelendost', 'Keçiborlu', 'Senirkent', 'Sütçüler', 'Gönen', 'Uluborlu', 'Atabey', 'Aksu', 'Yenişarbademli'] },
+  { code: '33', name: 'Mersin', region: 'Akdeniz', districts: ['Tarsus', 'Toroslar', 'Akdeniz', 'Yenişehir', 'Mezitli', 'Erdemli', 'Silifke', 'Anamur', 'Mut', 'Bozyazı', 'Gülnar', 'Aydıncık', 'Çamlıyayla'] },
+  { code: '34', name: 'İstanbul', region: 'Marmara', districts: ['Esenyurt', 'Küçükçekmece', 'Bağcılar', 'Pendik', 'Ümraniye', 'Ataşehir', 'Beylikdüzü', 'Kadıköy', 'Maltepe', 'Silivri', 'Çatalca', 'Arnavutköy', 'Sarıyer', 'Şişli', 'Beşiktaş', 'Tuzla', 'Fatih'] },
+  { code: '35', name: 'İzmir', region: 'Ege', districts: ['Buca', 'Karabağlar', 'Bornova', 'Konak', 'Karşıyaka', 'Bayraklı', 'Çiğli', 'Torbalı', 'Menemen', 'Gaziemir', 'Ödemiş', 'Bergama', 'Kemalpaşa', 'Tire', 'Aliağa', 'Urla', 'Foça', 'Çeşme'] },
+  { code: '36', name: 'Kars', region: 'Doğu Anadolu', districts: ['Merkez', 'Kağızman', 'Sarıkamış', 'Selim', 'Digor', 'Arpaçay', 'Akyaka', 'Susuz'] },
+  { code: '37', name: 'Kastamonu', region: 'Karadeniz', districts: ['Merkez', 'Tosya', 'Taşköprü', 'Cide', 'İnebolu', 'Araç', 'Devrekani', 'Bozkurt', 'Daday', 'Küre', 'Azdavay', 'Abana', 'Şenpazar', 'Çatalzeytin', 'Pınarbaşı', 'İhsangazi', 'Hanönü', 'Seydiler', 'Ağlı', 'Doğanyurt'] },
+  { code: '38', name: 'Kayseri', region: 'İç Anadolu', districts: ['Melikgazi', 'Kocasinan', 'Talas', 'Develi', 'Yahyalı', 'Bünyan', 'Pınarbaşı', 'Tomarza', 'Yeşilhisar', 'Sarıoğlan', 'Hacılar', 'Incesu', 'Sarız', 'Felahiye', 'Özvatan', 'Akkışla'] },
+  { code: '39', name: 'Kırklareli', region: 'Marmara', districts: ['Merkez', 'Lüleburgaz', 'Babaeski', 'Vize', 'Pınarhisar', 'Demirköy', 'Pehlivanköy', 'Kofçaz'] },
+  { code: '40', name: 'Kırşehir', region: 'İç Anadolu', districts: ['Merkez', 'Kaman', 'Mucur', 'Çiçekdağı', 'Akpınar', 'Boztepe', 'Akçakent'] },
+  { code: '41', name: 'Kocaeli', region: 'Marmara', districts: ['İzmit', 'Gebze', 'Darıca', 'Körfez', 'Gölcük', 'Derince', 'Çayırova', 'Kartepe', 'Başiskele', 'Karamürsel', 'Kandıra', 'Dilovası'] },
+  { code: '42', name: 'Konya', region: 'İç Anadolu', districts: ['Selçuklu', 'Karatay', 'Meram', 'Ereğli', 'Akşehir', 'Beyşehir', 'Çumra', 'Seydişehir', 'Ilgın', 'Cihanbeyli', 'Kulu', 'Karapınar', 'Kadınhanı', 'Sarayönü', 'Bozkır', 'Yunak', 'Hüyük', 'Tuzlukçu', 'Altınekin', 'Hadim'] },
+  { code: '43', name: 'Kütahya', region: 'Ege', districts: ['Merkez', 'Tavşanlı', 'Simav', 'Gediz', 'Emet', 'Altıntaş', 'Domaniç', 'Hisarcık', 'Aslanapa', 'Çavdarhisar', 'Şaphane', 'Pazarlar', 'Dumlupınar'] },
+  { code: '44', name: 'Malatya', region: 'Doğu Anadolu', districts: ['Battalgazi', 'Yeşilyurt', 'Doğanşehir', 'Akçadağ', 'Darende', 'Hekimhan', 'Pütürge', 'Yazıhan', 'Arapgir', 'Kuluncak', 'Argovan', 'Kale', 'Doğanyol'] },
+  { code: '45', name: 'Manisa', region: 'Ege', districts: ['Yunusemre', 'Şehzadeler', 'Akhisar', 'Turgutlu', 'Salihli', 'Soma', 'Alaşehir', 'Saruhanlı', 'Kula', 'Demirci', 'Kırkağaç', 'Sarıgöl', 'Gördes', 'Selendi', 'Ahmetli', 'Gölmarmara', 'Köprübaşı'] },
+  { code: '46', name: 'Kahramanmaraş', region: 'Akdeniz', districts: ['Onikişubat', 'Dulkadiroğlu', 'Elbistan', 'Afşin', 'Türkoğlu', 'Pazarcık', 'Göksun', 'Andırın', 'Çağlayancerit', 'Nurhak', 'Ekinözü'] },
+  { code: '47', name: 'Mardin', region: 'Güneydoğu Anadolu', districts: ['Artuklu', 'Kızıltepe', 'Nusaybin', 'Midyat', 'Derik', 'Mazıdağı', 'Dargeçit', 'Savur', 'Yeşilli', 'Ömerli'] },
+  { code: '48', name: 'Muğla', region: 'Ege', districts: ['Bodrum', 'Fethiye', 'Milas', 'Menteşe', 'Marmaris', 'Seydikemer', 'Yatağan', 'Ortaca', 'Dalaman', 'Ula', 'Datça', 'Köyceğiz', 'Kavaklıdere'] },
+  { code: '49', name: 'Muş', region: 'Doğu Anadolu', districts: ['Merkez', 'Bulanık', 'Malazgirt', 'Varto', 'Hasköy', 'Korkut'] },
+  { code: '50', name: 'Nevşehir', region: 'İç Anadolu', districts: ['Merkez', 'Ürgüp', 'Avanos', 'Gülşehir', 'Derinkuyu', 'Acıgöl', 'Hacıbektaş', 'Kozaklı'] },
+  { code: '51', name: 'Niğde', region: 'İç Anadolu', districts: ['Merkez', 'Bor', 'Çiftlik', 'Ulukışla', 'Altunhisar', 'Çamardı'] },
+  { code: '52', name: 'Ordu', region: 'Karadeniz', districts: ['Altınordu', 'Ünye', 'Fatsa', 'Gölköy', 'Perşembe', 'Kümbet', 'Kumru', 'Korgan', 'Ulubey', 'Aybastı', 'Akkuş', 'Gürgentepe', 'Çatalpınar', 'Çaybaşı', 'Mesudiye', 'İkizce', 'Kabataş', 'Çamaş', 'Gülyalı'] },
+  { code: '53', name: 'Rize', region: 'Karadeniz', districts: ['Merkez', 'Çayeli', 'Ardeşen', 'Pazar', 'Fındıklı', 'Güneysu', 'Kalkandere', 'İyidere', 'Derepazarı', 'Çamlıhemşin', 'Ikizdere', 'Hemşin'] },
+  { code: '54', name: 'Sakarya', region: 'Marmara', districts: ['Adapazarı', 'Serdivan', 'Erenler', 'Akyazı', 'Hendek', 'Karasu', 'Geyve', 'Sapanca', 'Pamukova', 'Ferizli', 'Kocaali', 'Söğütlü', 'Kaynarca', 'Arifiye', 'Taraklı', 'Karapürçek'] },
+  { code: '55', name: 'Samsun', region: 'Karadeniz', districts: ['Atakum', 'İlkadım', 'Canik', 'Bafra', 'Çarşamba', 'Vezirköprü', 'Terme', 'Tekkeköy', 'Havza', '19 Mayıs', 'Alaçam', 'Kavak', 'Salıpazarı', 'Asarcık', 'Ayvacık', 'Ladik', 'Yakakent'] },
+  { code: '56', name: 'Siirt', region: 'Güneydoğu Anadolu', districts: ['Merkez', 'Kurtalan', 'Pervari', 'Baykan', 'Şirvan', 'Eruh', 'Tillo'] },
+  { code: '57', name: 'Sinop', region: 'Karadeniz', districts: ['Merkez', 'Boyabat', 'Gerze', 'Ayancık', 'Durağan', 'Türkeli', 'Erfelek', 'Dikmen', 'Saraydüzü'] },
+  { code: '58', name: 'Sivas', region: 'İç Anadolu', districts: ['Merkez', 'Şarkışla', 'Yıldızeli', 'Suşehri', 'Gemerek', 'Zara', 'Kangal', 'Gürün', 'Divriği', 'Koyulhisar', 'Altınyayla', 'Hafik', 'Ulaş', 'İmranlı', 'Akıncılar', 'Gölova', 'Doğanşar'] },
+  { code: '59', name: 'Tekirdağ', region: 'Marmara', districts: ['Çorlu', 'Süleymanpaşa', 'Çerkezköy', 'Kapaklı', 'Ergene', 'Malkara', 'Saray', 'Hayrabolu', 'Şarköy', 'Muratlı', 'Marmaraereğlisi'] },
+  { code: '60', name: 'Tokat', region: 'Karadeniz', districts: ['Merkez', 'Erbaa', 'Turhal', 'Niksar', 'Zile', 'Reşadiye', 'Almus', 'Pazar', 'Yeşilyurt', 'Artova', 'Sulusaray', 'Başçiftlik'] },
+  { code: '61', name: 'Trabzon', region: 'Karadeniz', districts: ['Ortahisar', 'Akçaabat', 'Araklı', 'Of', 'Yomra', 'Sürmene', 'Arsin', 'Vakfıkebir', 'Beşikdüzü', 'Maçka', 'Çarşıbaşı', 'Tonya', 'Düzköy', 'Sürmene', 'Şalpazarı', 'Çaykara', 'Köprübaşı', 'Hayrat', 'Dernekpazarı'] },
+  { code: '62', name: 'Tunceli', region: 'Doğu Anadolu', districts: ['Merkez', 'Pertek', 'Mazgirt', 'Çemişgezek', 'Hozat', 'Ovacık', 'Nazımiye', 'Pülümür'] },
+  { code: '63', name: 'Şanlıurfa', region: 'Güneydoğu Anadolu', districts: ['Eyyübiye', 'Haliliye', 'Karaköprü', 'Siverek', 'Viranşehir', 'Suruç', 'Birecik', 'Ceylanpınar', 'Akçakale', 'Harran', 'Bozova', 'Hilvan', 'Halfeti'] },
+  { code: '64', name: 'Uşak', region: 'Ege', districts: ['Merkez', 'Banaz', 'Eşme', 'Sivaslı', 'Ulubey', 'Karahallı'] },
+  { code: '65', name: 'Van', region: 'Doğu Anadolu', districts: ['Ipekyolu', 'Tuşba', 'Edremit', 'Erciş', 'Özalp', 'Çaldıran', 'Muradiye', 'Gürpınar', 'Başkale', 'Gevaş', 'Çatak', 'Saray', 'Bahçesaray'] },
+  { code: '66', name: 'Yozgat', region: 'İç Anadolu', districts: ['Merkez', 'Sorgun', 'Akdağmadeni', 'Yerköy', 'Boğazlıyan', 'Sarıkaya', 'Çekerek', 'Şefaatli', 'Saraykent', 'Çayıralan', 'Kadışehri', 'Aydıncık', 'Yenifakılı', 'Chandır'] },
+  { code: '67', name: 'Zonguldak', region: 'Karadeniz', districts: ['Merkez', 'Ereğli', 'Çaycuma', 'Devrek', 'Kozlu', 'Kilimli', 'Alaplı', 'Gökçebey'] },
+  { code: '68', name: 'Aksaray', region: 'İç Anadolu', districts: ['Merkez', 'Ortaköy', 'Eskil', 'Gülağaç', 'Güzelyurt', 'Ağaçören', 'Sarıyahşi', 'Sultanhanı'] },
+  { code: '69', name: 'Bayburt', region: 'Karadeniz', districts: ['Merkez', 'Demirözü', 'Aydıntepe'] },
+  { code: '70', name: 'Karaman', region: 'İç Anadolu', districts: ['Merkez', 'Ermenek', 'Sarıveliler', 'Ayrancı', 'Kazımkarabekir', 'Başyayla'] },
+  { code: '71', name: 'Kırıkkale', region: 'İç Anadolu', districts: ['Merkez', 'Yahşihan', 'Keskin', 'Delice', 'Bahşılı', 'Sulakyurt', 'Balışeyh', 'Karakeçili', 'Çelebi'] },
+  { code: '72', name: 'Batman', region: 'Güneydoğu Anadolu', districts: ['Merkez', 'Kozluk', 'Sason', 'Beşiri', 'Gercüş', 'Hasankeyf'] },
+  { code: '73', name: 'Şırnak', region: 'Güneydoğu Anadolu', districts: ['Merkez', 'Cizre', 'Silopi', 'İdil', 'Uludere', 'Beytüşşebap', 'Güçlükonak'] },
+  { code: '74', name: 'Bartın', region: 'Karadeniz', districts: ['Merkez', 'Ulus', 'Amasra', 'Kurucaşile'] },
+  { code: '75', name: 'Ardahan', region: 'Doğu Anadolu', districts: ['Merkez', 'Göle', 'Çıldır', 'Hanak', 'Posof', 'Damal'] },
+  { code: '76', name: 'Iğdır', region: 'Doğu Anadolu', districts: ['Merkez', 'Tuzluca', 'Aralık', 'Karakoyunlu'] },
+  { code: '77', name: 'Yalova', region: 'Marmara', districts: ['Merkez', 'Çiftlikköy', 'Çınarcık', 'Altınova', 'Armutlu', 'Termal'] },
+  { code: '78', name: 'Karabük', region: 'Karadeniz', districts: ['Merkez', 'Safranbolu', 'Yenice', 'Eskipazar', 'Eflani', 'Ovacık'] },
+  { code: '79', name: 'Kilis', region: 'Güneydoğu Anadolu', districts: ['Merkez', 'Elbeyli', 'Musabeyli', 'Polateli'] },
+  { code: '80', name: 'Osmaniye', region: 'Akdeniz', districts: ['Merkez', 'Kadirli', 'Düziçi', 'Bahçe', 'Toprakkale', 'Sumbas', 'Hasanbeyli'] },
+  { code: '81', name: 'Düzce', region: 'Karadeniz', districts: ['Merkez', 'Akçakoca', 'Kaynaşlı', 'Gölyaka', 'Çilimli', 'Yığılca', 'Gümüşova', 'Cumayeri'] }
+];
+
+export function getProvinceByCode(code: string): Province | undefined {
+  return TURKEY_PROVINCES.find(p => p.code === code);
+}
+
+export function getProvinceByName(name: string): Province | undefined {
+  return TURKEY_PROVINCES.find(p => p.name.toLocaleLowerCase('tr-TR') === name.toLocaleLowerCase('tr-TR'));
+}
+
+export function getDistrictsOfProvince(provinceNameOrCode: string): string[] {
+  const p = TURKEY_PROVINCES.find(p => p.code === provinceNameOrCode || p.name.toLocaleLowerCase('tr-TR') === provinceNameOrCode.toLocaleLowerCase('tr-TR'));
+  return p ? p.districts : ['Merkez'];
+}

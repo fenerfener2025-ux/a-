@@ -1,0 +1,6 @@
+{
+  "name": "Etlik Veteriner Aşı Envanteri ve Dağıtım Takip Sistemi",
+  "description": "Etlik Veteriner Kontrol Merkez Araştırma Enstitüsü Aşı Envanteri, Seri/Lot Takibi ve Akıllı İl Dağıtım Portalı",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
