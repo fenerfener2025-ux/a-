@@ -71,7 +71,7 @@ export const AppLogo: React.FC<AppLogoProps> = ({
 
         {showSubtitle && (
           <span className={`text-[11px] font-semibold tracking-normal mt-1 leading-none ${lightBackground ? 'text-slate-500' : 'text-indigo-200/80'}`}>
-            Etlik VKMAE Aşı & Seri Yönetim Portalı
+            Aşı Envanteri
           </span>
         )}
       </div>

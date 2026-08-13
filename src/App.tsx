@@ -12,8 +12,11 @@ import { InventoryModule } from './components/InventoryModule';
 import { DistributionModule } from './components/DistributionModule';
 import { ReturnDestructionModule } from './components/ReturnDestructionModule';
 import { ReportsModule } from './components/ReportsModule';
+import { OfficialWordFormsView } from './components/OfficialWordFormsView';
 import { ImportSystem } from './components/ImportSystem';
 import { AuditHistoryModule } from './components/AuditHistoryModule';
+import { SettingsModule } from './components/SettingsModule';
+import { NotesPlannerModule } from './components/NotesPlannerModule';
 import { LoginScreen } from './components/LoginScreen';
 import { StorageService } from './services/storageService';
 import { SeriesLot, SearchResultItem } from './types';
@@ -153,12 +156,24 @@ export default function App() {
             <ReportsModule />
           )}
 
+          {activeView === 'word_forms' && (
+            <OfficialWordFormsView />
+          )}
+
+          {activeView === 'notes_planner' && (
+            <NotesPlannerModule />
+          )}
+
           {activeView === 'import' && (
             <ImportSystem />
           )}
 
           {activeView === 'history' && (
             <AuditHistoryModule />
+          )}
+
+          {activeView === 'settings' && (
+            <SettingsModule />
           )}
         </main>
 

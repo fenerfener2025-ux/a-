@@ -157,3 +157,19 @@ export interface SearchResultItem {
   targetView: 'inventory' | 'distribution' | 'returns' | 'reports';
   actionData?: any;
 }
+
+export type NoteCategory = 'Aşı SKT Uyarısı' | 'Üretim Görevi' | 'Sevkiyat Planı' | 'Denetim / Toplantı' | 'Genel Not';
+export type NotePriority = 'Yüksek' | 'Orta' | 'Düşük';
+
+export interface NoteItem {
+  id: string;
+  title: string;
+  description: string;
+  category: NoteCategory;
+  priority: NotePriority;
+  dueDate: string; // YYYY-MM-DD
+  completed: boolean;
+  createdAt: string;
+  updatedAt: string;
+  createdByName?: string;
+}

@@ -15,6 +15,12 @@ import {
 import { StorageService, convertKoyunToFlakon, convertKoyunToSigir } from '../services/storageService';
 import { Shipment, SeriesLot, ReturnRecord, DestructionRecord } from '../types';
 import { exportFullSystemToExcel } from '../utils/excelExport';
+import {
+  generateVBUDLWordDoc,
+  generateUretimCetveliWordDoc,
+  buildVBUDLFormDataFromStore,
+  buildUretimCetveliFormDataFromStore
+} from '../utils/wordFormGenerator';
 
 export const ReportsModule: React.FC = () => {
   const [activeReportType, setActiveReportType] = useState<'inventory' | 'shipments' | 'returns' | 'destructions'>('shipments');
@@ -25,6 +31,16 @@ export const ReportsModule: React.FC = () => {
   const shipments = StorageService.getShipments();
   const returns = StorageService.getReturns();
   const destructions = StorageService.getDestructions();
+
+  const handleDownloadVbudlWord = async () => {
+    const data = buildVBUDLFormDataFromStore('Ocak 2026', '');
+    await generateVBUDLWordDoc(data);
+  };
+
+  const handleDownloadUretimCetveliWord = async () => {
+    const data = buildUretimCetveliFormDataFromStore('2026-Ocak');
+    await generateUretimCetveliWordDoc(data);
+  };
 
   // Export to Excel (.xlsx) using xlsx library
   const handleExportExcel = () => {
@@ -51,10 +67,26 @@ export const ReportsModule: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            onClick={handleDownloadVbudlWord}
+            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
+          >
+            <FileText className="w-4 h-4" />
+            VBÜDL Word (.docx)
+          </button>
+
+          <button
+            onClick={handleDownloadUretimCetveliWord}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-3.5 py-2.5 rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
+          >
+            <FileText className="w-4 h-4" />
+            Üretim Cetveli Word (.docx)
+          </button>
+
           <button
             onClick={handleExportExcel}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs px-4 py-2.5 rounded-full shadow-xs transition-all flex items-center gap-2 cursor-pointer"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs px-3.5 py-2.5 rounded-xl shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
           >
             <Download className="w-4 h-4" />
             Excel İndir (.xlsx)

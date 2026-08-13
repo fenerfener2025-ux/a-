@@ -5,12 +5,15 @@ import {
   Truck,
   RotateCcw,
   FileSpreadsheet,
+  FileText,
   Upload,
   Building2,
   AlertTriangle,
   ChevronRight,
   Database,
-  History
+  History,
+  Settings,
+  Bell
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -58,6 +61,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
       description: 'Resmi Belgeler, Excel & Yazdır'
     },
     {
+      id: 'word_forms',
+      label: 'Resmi Word Formları',
+      icon: FileText,
+      description: 'VBÜDL & Üretim Cetveli (.docx)'
+    },
+    {
+      id: 'notes_planner',
+      label: 'Notlar & Hatırlatıcılar',
+      icon: Bell,
+      description: 'Görev Planlayıcı, SKT & Operasyonel Notlar'
+    },
+    {
       id: 'import',
       label: 'Akıllı Veri Aktarımı',
       icon: Upload,
@@ -68,17 +83,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
       label: 'İşlem Geçmişi',
       icon: History,
       description: 'Geçmiş İşlem Logları & Denetim İzi'
+    },
+    {
+      id: 'settings',
+      label: 'Ayarlar & Veri Düzeltme',
+      icon: Settings,
+      description: 'Veri Düzeltme, Yedekleme & Parametreler'
     }
   ];
 
   return (
     <aside className="w-64 bg-white text-slate-700 border-r border-slate-200 flex flex-col justify-between shrink-0 shadow-2xs min-h-[calc(100vh-4rem)]">
-      {/* Top Menu Items */}
-      <div className="p-3 space-y-1">
-        <div className="px-3 py-2 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-          Sistem Modülleri
-        </div>
-
+      {/* Top Menu Items - Moved to the Very Top */}
+      <div className="p-2 pt-2 space-y-1">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeView === item.id;

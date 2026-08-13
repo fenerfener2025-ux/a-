@@ -9,7 +9,8 @@ import {
   CheckCircle2,
   FileText,
   Info,
-  Clock
+  Clock,
+  Trash2
 } from 'lucide-react';
 import { StorageService } from '../services/storageService';
 import { ReturnRecord, DestructionRecord, ReturnStatus, DestructionRecord as DesType } from '../types';
@@ -270,6 +271,7 @@ export const ReturnDestructionModule: React.FC = () => {
                   <th className="p-3.5">İade Nedeni</th>
                   <th className="p-3.5 text-center">İade Sonrası Durum</th>
                   <th className="p-3.5 text-center">Tarih</th>
+                  <th className="p-3.5 text-center">İşlem</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -301,6 +303,20 @@ export const ReturnDestructionModule: React.FC = () => {
                       </span>
                     </td>
                     <td className="p-3.5 text-center text-slate-500 font-mono">{r.date}</td>
+                    <td className="p-3.5 text-center">
+                      <button
+                        onClick={() => {
+                          if (confirm(`"${r.returnNo}" numaralı iade kaydını silmek istediğinize emin misiniz?`)) {
+                            StorageService.deleteReturn(r.id);
+                            refreshData();
+                          }
+                        }}
+                        className="p-1.5 bg-rose-50 text-rose-600 rounded-full hover:bg-rose-100 transition-colors cursor-pointer"
+                        title="İade Kaydını Sil"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -322,6 +338,7 @@ export const ReturnDestructionModule: React.FC = () => {
                   <th className="p-3.5">Gerekçe</th>
                   <th className="p-3.5 text-center">Onay Durumu</th>
                   <th className="p-3.5 text-center">Tarih</th>
+                  <th className="p-3.5 text-center">İşlem</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -348,6 +365,20 @@ export const ReturnDestructionModule: React.FC = () => {
                       </span>
                     </td>
                     <td className="p-3.5 text-center text-slate-500 font-mono">{d.date}</td>
+                    <td className="p-3.5 text-center">
+                      <button
+                        onClick={() => {
+                          if (confirm(`"${d.protocolNo}" numaralı imha kaydını silmek istediğinize emin misiniz?`)) {
+                            StorageService.deleteDestruction(d.id);
+                            refreshData();
+                          }
+                        }}
+                        className="p-1.5 bg-rose-50 text-rose-600 rounded-full hover:bg-rose-100 transition-colors cursor-pointer"
+                        title="İmha Tutanağını Sil"
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

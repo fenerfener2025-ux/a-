@@ -6,7 +6,7 @@ export const TURKEY_PROVINCES: Province[] = [
   { code: '03', name: 'Afyonkarahisar', region: 'Ege', districts: ['Merkez', 'Bolvadin', 'Dinar', 'Emirdağ', 'Sandıklı', 'Şuhut', 'Çay', 'İscehisar', 'Sultandağı', 'Sinanpaşa', 'Dazkırı', 'Başmakçı', 'Bayat', 'İhsaniye', 'Çobanlar', 'Evciler', 'Hocalar', 'Kızılören'] },
   { code: '04', name: 'Ağrı', region: 'Doğu Anadolu', districts: ['Merkez', 'Doğubayazıt', 'Eleşkirt', 'Patnos', 'Tutak', 'Diyadin', 'Hamur', 'Taşlıçay'] },
   { code: '05', name: 'Amasya', region: 'Karadeniz', districts: ['Merkez', 'Merzifon', 'Suluova', 'Taşova', 'Göynücek', 'Gümüşhacıköy', 'Hamamözü'] },
-  { code: '06', name: 'Ankara', region: 'İç Anadolu', districts: ['Çankaya', 'Keçiören', 'Yenimahalle', 'Mamak', 'Etimesgut', 'Sincan', 'Altındağ', 'Gölbaşı', 'Polatlı', 'Çubuk', 'Kahramankazan', 'Akyurt', 'Bala', 'Beypazarı', 'Elmadağ', 'Evren', 'Güdül', 'Haymana', 'Kalecik', 'Kızılcahamam', 'Nallıhan', 'Şereflikoçhisar', 'Nallıhan'] },
+  { code: '06', name: 'Ankara', region: 'İç Anadolu', districts: ['Çankaya', 'Keçiören', 'Yenimahalle', 'Mamak', 'Etimesgut', 'Sincan', 'Altındağ', 'Gölbaşı', 'Polatlı', 'Çubuk', 'Kahramankazan', 'Akyurt', 'Bala', 'Beypazarı', 'Elmadağ', 'Evren', 'Güdül', 'Haymana', 'Kalecik', 'Kızılcahamam', 'Nallıhan', 'Şereflikoçhisar'] },
   { code: '07', name: 'Antalya', region: 'Akdeniz', districts: ['Muratpaşa', 'Kepez', 'Konyaaltı', 'Alanya', 'Manavgat', 'Serik', 'Kumluca', 'Kaş', 'Finike', 'Gazipaşa', 'Elmalı', 'Korkuteli', 'Akseki', 'Demre', 'Gündoğmuş', 'İbradı', 'Kemer'] },
   { code: '08', name: 'Artvin', region: 'Karadeniz', districts: ['Merkez', 'Hopa', 'Borçka', 'Arhavi', 'Yusufeli', 'Şavşat', 'Ardanuç', 'Murgul', 'Kemalpaşa'] },
   { code: '09', name: 'Aydın', region: 'Ege', districts: ['Efeler', 'Nazilli', 'Söke', 'Kuşadası', 'Didim', 'İncirliova', 'Çine', 'Germencik', 'Bozdoğan', 'Karacasu', 'Koçarlı', 'Köşk', 'Kuyucak', 'Sultanhisar', 'Yenipazar', 'Buharkent', 'Karpuzlu'] },
@@ -61,7 +61,7 @@ export const TURKEY_PROVINCES: Province[] = [
   { code: '58', name: 'Sivas', region: 'İç Anadolu', districts: ['Merkez', 'Şarkışla', 'Yıldızeli', 'Suşehri', 'Gemerek', 'Zara', 'Kangal', 'Gürün', 'Divriği', 'Koyulhisar', 'Altınyayla', 'Hafik', 'Ulaş', 'İmranlı', 'Akıncılar', 'Gölova', 'Doğanşar'] },
   { code: '59', name: 'Tekirdağ', region: 'Marmara', districts: ['Çorlu', 'Süleymanpaşa', 'Çerkezköy', 'Kapaklı', 'Ergene', 'Malkara', 'Saray', 'Hayrabolu', 'Şarköy', 'Muratlı', 'Marmaraereğlisi'] },
   { code: '60', name: 'Tokat', region: 'Karadeniz', districts: ['Merkez', 'Erbaa', 'Turhal', 'Niksar', 'Zile', 'Reşadiye', 'Almus', 'Pazar', 'Yeşilyurt', 'Artova', 'Sulusaray', 'Başçiftlik'] },
-  { code: '61', name: 'Trabzon', region: 'Karadeniz', districts: ['Ortahisar', 'Akçaabat', 'Araklı', 'Of', 'Yomra', 'Sürmene', 'Arsin', 'Vakfıkebir', 'Beşikdüzü', 'Maçka', 'Çarşıbaşı', 'Tonya', 'Düzköy', 'Sürmene', 'Şalpazarı', 'Çaykara', 'Köprübaşı', 'Hayrat', 'Dernekpazarı'] },
+  { code: '61', name: 'Trabzon', region: 'Karadeniz', districts: ['Ortahisar', 'Akçaabat', 'Araklı', 'Of', 'Yomra', 'Sürmene', 'Arsin', 'Vakfıkebir', 'Beşikdüzü', 'Maçka', 'Çarşıbaşı', 'Tonya', 'Düzköy', 'Şalpazarı', 'Çaykara', 'Köprübaşı', 'Hayrat', 'Dernekpazarı'] },
   { code: '62', name: 'Tunceli', region: 'Doğu Anadolu', districts: ['Merkez', 'Pertek', 'Mazgirt', 'Çemişgezek', 'Hozat', 'Ovacık', 'Nazımiye', 'Pülümür'] },
   { code: '63', name: 'Şanlıurfa', region: 'Güneydoğu Anadolu', districts: ['Eyyübiye', 'Haliliye', 'Karaköprü', 'Siverek', 'Viranşehir', 'Suruç', 'Birecik', 'Ceylanpınar', 'Akçakale', 'Harran', 'Bozova', 'Hilvan', 'Halfeti'] },
   { code: '64', name: 'Uşak', region: 'Ege', districts: ['Merkez', 'Banaz', 'Eşme', 'Sivaslı', 'Ulubey', 'Karahallı'] },
@@ -94,5 +94,5 @@ export function getProvinceByName(name: string): Province | undefined {
 
 export function getDistrictsOfProvince(provinceNameOrCode: string): string[] {
   const p = TURKEY_PROVINCES.find(p => p.code === provinceNameOrCode || p.name.toLocaleLowerCase('tr-TR') === provinceNameOrCode.toLocaleLowerCase('tr-TR'));
-  return p ? p.districts : ['Merkez'];
+  return p ? Array.from(new Set(p.districts)) : ['Merkez'];
 }

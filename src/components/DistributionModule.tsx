@@ -13,11 +13,16 @@ import {
   FileText,
   Info,
   ShieldCheck,
-  Package
+  Package,
+  Trash2,
+  Download,
+  CheckSquare,
+  Square
 } from 'lucide-react';
 import { StorageService, convertKoyunToFlakon, convertKoyunToSigir } from '../services/storageService';
 import { TURKEY_PROVINCES, getDistrictsOfProvince } from '../data/turkeyData';
 import { Shipment, SeriesLot, Institution } from '../types';
+import { generateVBUDLWordDoc, buildVBUDLFormDataFromStore } from '../utils/wordFormGenerator';
 
 interface DistributionModuleProps {
   preselectedSeriesId?: string | null;
@@ -33,6 +38,24 @@ export const DistributionModule: React.FC<DistributionModuleProps> = ({
   const [shipments, setShipments] = useState<Shipment[]>(StorageService.getShipments());
   const [seriesList, setSeriesList] = useState<SeriesLot[]>(StorageService.getSeries());
   const [institutions, setInstitutions] = useState<Institution[]>(StorageService.getInstitutions());
+
+  // Multi-select state for Shipments
+  const [selectedShipmentIds, setSelectedShipmentIds] = useState<string[]>([]);
+
+  const toggleSelectShipment = (id: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setSelectedShipmentIds(prev =>
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    );
+  };
+
+  const toggleSelectAllShipments = (filtered: Shipment[]) => {
+    if (selectedShipmentIds.length === filtered.length && filtered.length > 0) {
+      setSelectedShipmentIds([]);
+    } else {
+      setSelectedShipmentIds(filtered.map(s => s.id));
+    }
+  };
 
   const [activeSubTab, setActiveSubTab] = useState<'shipments' | 'new_shipment' | 'provinces'>('shipments');
   const [searchQuery, setSearchQuery] = useState('');
@@ -56,7 +79,7 @@ export const DistributionModule: React.FC<DistributionModuleProps> = ({
 
   // Update Districts when Province changes
   const currentProvince = TURKEY_PROVINCES.find(p => p.code === selectedProvinceCode) || TURKEY_PROVINCES[0];
-  const availableDistricts = currentProvince.districts;
+  const availableDistricts = getDistrictsOfProvince(selectedProvinceCode);
 
   useEffect(() => {
     // When province changes, update default district & institution name
@@ -267,11 +290,57 @@ export const DistributionModule: React.FC<DistributionModuleProps> = ({
 
       {/* Main Content Areas */}
       {activeSubTab === 'shipments' && (
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden relative">
+          
+          {/* Floating Action Bar for Selected Shipments */}
+          {selectedShipmentIds.length > 0 && (
+            <div className="bg-indigo-900 text-white p-3 px-5 flex flex-col sm:flex-row items-center justify-between gap-3 animate-in fade-in slide-in-from-top-2 border-b border-indigo-800">
+              <div className="flex items-center gap-2 text-xs font-bold">
+                <span className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs">
+                  {selectedShipmentIds.length}
+                </span>
+                <span>Seçili Sevkiyat Hakkında İşlemler ({selectedShipmentIds.length} Adet)</span>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  onClick={() => {
+                    const data = buildVBUDLFormDataFromStore('Ocak 2026', '', undefined, selectedShipmentIds);
+                    generateVBUDLWordDoc(data);
+                  }}
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-3.5 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  Seçilen Sevkiyatlardan VBÜDL Word Formu İndir (.docx)
+                </button>
+
+                <button
+                  onClick={() => setSelectedShipmentIds([])}
+                  className="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer"
+                >
+                  Seçimi Temizle
+                </button>
+              </div>
+            </div>
+          )}
+
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead className="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
                 <tr>
+                  <th className="p-3.5 w-10 text-center">
+                    <button
+                      onClick={() => toggleSelectAllShipments(filteredShipments)}
+                      className="text-slate-500 hover:text-indigo-600 cursor-pointer"
+                      title="Tümünü Seç / Seçimi Kaldır"
+                    >
+                      {selectedShipmentIds.length === filteredShipments.length && filteredShipments.length > 0 ? (
+                        <CheckSquare className="w-4 h-4 text-indigo-600" />
+                      ) : (
+                        <Square className="w-4 h-4 text-slate-400" />
+                      )}
+                    </button>
+                  </th>
                   <th className="p-3.5">Sevk No / Protokol</th>
                   <th className="p-3.5">Hedef İl / Kurum</th>
                   <th className="p-3.5">Aşı & Seri No</th>
@@ -279,44 +348,73 @@ export const DistributionModule: React.FC<DistributionModuleProps> = ({
                   <th className="p-3.5 text-right">Flakon Sayısı</th>
                   <th className="p-3.5 text-center">Tarih</th>
                   <th className="p-3.5 text-center">Durum</th>
+                  <th className="p-3.5 text-center">İşlem</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {filteredShipments.map(s => (
-                  <tr
-                    key={s.id}
-                    onClick={() => setActiveProvinceDetail(s.provinceName)}
-                    className="hover:bg-indigo-50/60 transition-colors cursor-pointer group"
-                  >
-                    <td className="p-3.5 font-bold text-slate-900 group-hover:text-indigo-700">
-                      {s.shipmentNo}
-                      <div className="text-[10px] text-slate-400 font-mono">{s.protocolNo}</div>
-                    </td>
-                    <td className="p-3.5 font-semibold text-slate-800">
-                      <div className="flex items-center gap-1.5">
-                        <MapPin className="w-3.5 h-3.5 text-indigo-600" />
-                        {s.provinceName}
-                      </div>
-                      <div className="text-[10px] text-slate-500 font-normal">{s.institutionName}</div>
-                    </td>
-                    <td className="p-3.5 font-medium text-slate-700">
-                      {s.vaccineName}
-                      <div className="text-[10px] text-slate-500 font-mono">{s.seriesNo} ({s.lotNo})</div>
-                    </td>
-                    <td className="p-3.5 text-right font-extrabold text-indigo-600">
-                      {s.doseQuantity.toLocaleString('tr-TR')} Doz
-                    </td>
-                    <td className="p-3.5 text-right font-semibold text-slate-700">
-                      {s.flakonQuantity.toLocaleString('tr-TR')} Flakon
-                    </td>
-                    <td className="p-3.5 text-center text-slate-600 font-mono">{s.date}</td>
-                    <td className="p-3.5 text-center">
-                      <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
-                        {s.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
+                {filteredShipments.map(s => {
+                  const isSelected = selectedShipmentIds.includes(s.id);
+                  return (
+                    <tr
+                      key={s.id}
+                      onClick={() => setActiveProvinceDetail(s.provinceName)}
+                      className={`hover:bg-indigo-50/60 transition-colors cursor-pointer group ${
+                        isSelected ? 'bg-indigo-50/80 font-medium' : ''
+                      }`}
+                    >
+                      <td className="p-3.5 text-center" onClick={(e) => toggleSelectShipment(s.id, e)}>
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={() => {}}
+                          className="rounded text-indigo-600 focus:ring-indigo-500 w-4 h-4 cursor-pointer"
+                        />
+                      </td>
+                      <td className="p-3.5 font-bold text-slate-900 group-hover:text-indigo-700">
+                        {s.shipmentNo}
+                        <div className="text-[10px] text-slate-400 font-mono">{s.protocolNo}</div>
+                      </td>
+                      <td className="p-3.5 font-semibold text-slate-800">
+                        <div className="flex items-center gap-1.5">
+                          <MapPin className="w-3.5 h-3.5 text-indigo-600" />
+                          {s.provinceName}
+                        </div>
+                        <div className="text-[10px] text-slate-500 font-normal">{s.institutionName}</div>
+                      </td>
+                      <td className="p-3.5 font-medium text-slate-700">
+                        {s.vaccineName}
+                        <div className="text-[10px] text-slate-500 font-mono">{s.seriesNo} ({s.lotNo})</div>
+                      </td>
+                      <td className="p-3.5 text-right font-extrabold text-indigo-600">
+                        {s.doseQuantity.toLocaleString('tr-TR')} Doz
+                      </td>
+                      <td className="p-3.5 text-right font-semibold text-slate-700">
+                        {s.flakonQuantity.toLocaleString('tr-TR')} Flakon
+                      </td>
+                      <td className="p-3.5 text-center text-slate-600 font-mono">{s.date}</td>
+                      <td className="p-3.5 text-center">
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
+                          {s.status}
+                        </span>
+                      </td>
+                      <td className="p-3.5 text-center">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (confirm(`"${s.shipmentNo}" numaralı sevkiyatı iptal etmek/silmek istediğinize emin misiniz? Sevk edilen stok seriye iade edilecektir.`)) {
+                              StorageService.deleteShipment(s.id);
+                              setShipments(StorageService.getShipments());
+                            }
+                          }}
+                          className="p-1.5 bg-rose-50 text-rose-600 rounded-full hover:bg-rose-100 transition-colors cursor-pointer"
+                          title="Sevkiyatı İptal Et / Sil"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

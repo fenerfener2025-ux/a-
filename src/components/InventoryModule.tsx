@@ -15,10 +15,19 @@ import {
   Truck,
   RotateCcw,
   CheckCircle2,
-  Trash2
+  Trash2,
+  Download,
+  CheckSquare,
+  Square
 } from 'lucide-react';
 import { StorageService, convertKoyunToFlakon, convertKoyunToSigir, formatDoseDisplay } from '../services/storageService';
 import { Vaccine, SeriesLot, TechnicalValue, VaccineType, UnitType } from '../types';
+import {
+  generateUretimCetveliWordDoc,
+  generateVBUDLWordDoc,
+  buildUretimCetveliFormDataFromStore,
+  buildVBUDLFormDataFromStore
+} from '../utils/wordFormGenerator';
 
 interface InventoryModuleProps {
   selectedSeriesFromParent?: SeriesLot | null;
@@ -40,6 +49,24 @@ export const InventoryModule: React.FC<InventoryModuleProps> = ({
   // Data state
   const [vaccines, setVaccines] = useState<Vaccine[]>(StorageService.getVaccines());
   const [seriesList, setSeriesList] = useState<SeriesLot[]>(StorageService.getSeries());
+
+  // Multi-select state for Series
+  const [selectedSeriesIds, setSelectedSeriesIds] = useState<string[]>([]);
+
+  const toggleSelectSeries = (id: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setSelectedSeriesIds(prev =>
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    );
+  };
+
+  const toggleSelectAllSeries = (filtered: SeriesLot[]) => {
+    if (selectedSeriesIds.length === filtered.length && filtered.length > 0) {
+      setSelectedSeriesIds([]);
+    } else {
+      setSelectedSeriesIds(filtered.map(s => s.id));
+    }
+  };
 
   // Detail Drawers
   const [activeSeriesDetail, setActiveSeriesDetail] = useState<SeriesLot | null>(selectedSeriesFromParent || null);
@@ -314,11 +341,68 @@ export const InventoryModule: React.FC<InventoryModuleProps> = ({
       {/* Main Content Area */}
       {activeTab === 'series' ? (
         /* Series List Table */
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden relative">
+          
+          {/* Floating Action Bar when series are selected */}
+          {selectedSeriesIds.length > 0 && (
+            <div className="bg-indigo-900 text-white p-3 px-5 flex flex-col sm:flex-row items-center justify-between gap-3 animate-in fade-in slide-in-from-top-2 border-b border-indigo-800">
+              <div className="flex items-center gap-2 text-xs font-bold">
+                <span className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs">
+                  {selectedSeriesIds.length}
+                </span>
+                <span>Seçili Seri No Hakkında İşlemler ({selectedSeriesIds.length} Adet)</span>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  onClick={() => {
+                    const data = buildUretimCetveliFormDataFromStore('2026-Ocak', selectedSeriesIds);
+                    generateUretimCetveliWordDoc(data);
+                  }}
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  Üretim Cetveli Word İndir (.docx)
+                </button>
+
+                <button
+                  onClick={() => {
+                    const data = buildVBUDLFormDataFromStore('Ocak 2026', '', selectedSeriesIds);
+                    generateVBUDLWordDoc(data);
+                  }}
+                  className="bg-indigo-600 hover:bg-indigo-700 text-white px-3.5 py-1.5 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  VBÜDL Formu Word İndir (.docx)
+                </button>
+
+                <button
+                  onClick={() => setSelectedSeriesIds([])}
+                  className="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-full text-xs font-medium cursor-pointer"
+                >
+                  Seçimi Temizle
+                </button>
+              </div>
+            </div>
+          )}
+
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead className="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
                 <tr>
+                  <th className="p-3.5 w-10 text-center">
+                    <button
+                      onClick={() => toggleSelectAllSeries(filteredSeries)}
+                      className="text-slate-500 hover:text-indigo-600 cursor-pointer"
+                      title="Tümünü Seç / Seçimi Kaldır"
+                    >
+                      {selectedSeriesIds.length === filteredSeries.length && filteredSeries.length > 0 ? (
+                        <CheckSquare className="w-4 h-4 text-indigo-600" />
+                      ) : (
+                        <Square className="w-4 h-4 text-slate-400" />
+                      )}
+                    </button>
+                  </th>
                   <th className="p-3.5">Seri No / Lot</th>
                   <th className="p-3.5">Aşı Adı</th>
                   <th className="p-3.5">Üretim Tarihi</th>
@@ -332,12 +416,23 @@ export const InventoryModule: React.FC<InventoryModuleProps> = ({
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {filteredSeries.map(s => {
+                  const isSelected = selectedSeriesIds.includes(s.id);
                   return (
                     <tr
                       key={s.id}
                       onClick={() => setActiveSeriesDetail(s)}
-                      className="hover:bg-indigo-50/60 transition-colors cursor-pointer group"
+                      className={`hover:bg-indigo-50/60 transition-colors cursor-pointer group ${
+                        isSelected ? 'bg-indigo-50/80 font-medium' : ''
+                      }`}
                     >
+                      <td className="p-3.5 text-center" onClick={(e) => toggleSelectSeries(s.id, e)}>
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={() => {}}
+                          className="rounded text-indigo-600 focus:ring-indigo-500 w-4 h-4 cursor-pointer"
+                        />
+                      </td>
                       <td className="p-3.5 font-bold text-slate-900 group-hover:text-indigo-700">
                         {s.seriesNo}
                         <div className="text-[10px] text-slate-400 font-mono">{s.lotNo}</div>
@@ -364,15 +459,30 @@ export const InventoryModule: React.FC<InventoryModuleProps> = ({
                         </span>
                       </td>
                       <td className="p-3.5 text-center">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveSeriesDetail(s);
-                          }}
-                          className="px-3 py-1 bg-indigo-50 text-indigo-700 font-semibold rounded-full hover:bg-indigo-100 transition-colors text-xs cursor-pointer"
-                        >
-                          Seri Dosyası
-                        </button>
+                        <div className="flex items-center justify-center gap-1.5">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveSeriesDetail(s);
+                            }}
+                            className="px-3 py-1 bg-indigo-50 text-indigo-700 font-semibold rounded-full hover:bg-indigo-100 transition-colors text-xs cursor-pointer"
+                          >
+                            Seri Dosyası
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (confirm(`"${s.seriesNo}" numaralı seriyi silmek istediğinize emin misiniz?`)) {
+                                StorageService.deleteSeries(s.id);
+                                refreshData();
+                              }
+                            }}
+                            className="p-1 bg-rose-50 text-rose-600 rounded-full hover:bg-rose-100 transition-colors cursor-pointer"
+                            title="Seriyi Sil"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );
